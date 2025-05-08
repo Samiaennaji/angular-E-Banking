@@ -1,0 +1,74 @@
+<h2>Paramètres généraux</h2>
+
+<section>
+  <h3>Application</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Valeur</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of applicationSettings">
+        <td>{{ s.label }}</td>
+        <td>{{ s.value }}</td>
+        <td>{{ s.description }}</td>
+        <td><button (click)="edit(s)">Modifier</button></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h3>Financiers</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Valeur</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of financierSettings">
+        <td>{{ s.label }}</td>
+        <td>{{ s.value }}</td>
+        <td>{{ s.description }}</td>
+        <td><button (click)="edit(s)">Modifier</button></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h3>Sécurité</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Valeur</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of securiteSettings">
+        <td>{{ s.label }}</td>
+        <td>{{ s.value }}</td>
+        <td>{{ s.description }}</td>
+        <td><button (click)="edit(s)">Modifier</button></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<app-settings-edit-form
+  *ngIf="selectedSetting"
+  [setting]="selectedSetting"
+  (save)="saveEdited($event)"
+  (cancel)="cancelEdit()"
+></app-settings-edit-form>

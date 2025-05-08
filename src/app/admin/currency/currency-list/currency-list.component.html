@@ -1,0 +1,34 @@
+<h3>Liste des devises</h3>
+
+<button class="btn-add" (click)="showForm()">+ Ajouter une devise</button>
+
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Code</th>
+      <th>Taux</th>
+      <th>Base</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of currencies">
+      <td>{{ c.name }}</td>
+      <td>{{ c.code }}</td>
+      <td>{{ c.rate }}</td>
+      <td>{{ c.base ? '✓' : '—' }}</td>
+      <td>
+        <button class="btn btn-edit" (click)="edit(c)">Modifier</button>
+        <button class="btn btn-delete" (click)="delete(c.code)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<app-currency-form
+  *ngIf="isFormVisible"
+  [formTitle]="'Ajouter une devise'"
+  [currency]="newCurrency"
+  (save)="handleSave($event)"
+  (cancel)="handleCancel()"
+></app-currency-form>

@@ -1,0 +1,26 @@
+<div class="edit-form">
+  <h3>Modifier le paramètre</h3>
+  <p><strong>{{ setting?.label }}</strong></p>
+  <p><em>{{ setting?.description }}</em></p>
+
+  <div *ngIf="isBoolean()">
+    <label><input type="checkbox" [(ngModel)]="setting!.value" /> Activer</label>
+  </div>
+
+  <div *ngIf="isNumber()">
+    <input type="number" [(ngModel)]="setting!.value" />
+  </div>
+
+  <div *ngIf="isDate()">
+    <input type="date" [(ngModel)]="setting!.value" />
+  </div>
+
+  <div *ngIf="!isBoolean() && !isNumber() && !isDate()">
+    <input type="text" [(ngModel)]="setting!.value" />
+  </div>
+
+  <div class="form-actions">
+    <button class="btn-save" (click)="onSave()">Enregistrer</button>
+    <button class="btn-cancel" (click)="onCancel()">Annuler</button>
+  </div>
+</div>
